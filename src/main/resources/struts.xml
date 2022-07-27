@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">  
+
+<struts>
+    <constant name="struts.mapper.action.prefix.enabled" value="true"/>
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.ui.theme" value="css_xhtml" />
+
+    <constant name="struts.i18n.reload" value="false" />
+    <constant name="struts.configuration.xml.reload" value="false" />
+
+    <constant name="struts.convention.action.suffix" value="Controller"/>
+    <constant name="struts.convention.action.mapAllMatches" value="true"/>
+    <constant name="struts.convention.default.parent.package" value="rest-default"/>
+    <constant name="struts.convention.package.locators" value="rest"/>
+    <constant name="struts.mapper.class" value="org.apache.struts2.dispatcher.mapper.PrefixBasedActionMapper" />
+    <constant name="struts.mapper.prefixMapping" value="/api:rest,:struts"/>
+    <constant name="struts.rest.namespace" value="/api" />
+    <constant name="struts.rest.content.restrictToGET" value="false"/>
+
+    <package name="basicstruts2" extends="struts-default" namespace="/">
+    <default-action-ref name="index"/>
+    
+        <action name="index">
+            <result>/index.jsp</result>
+        </action>
+
+        <!-- LOGIN -->
+        <action name="Login" class="com.example.proj.action.Login" method="execute"> 
+            <result name="input">/index.jsp</result> 
+            <result name="Admin">/Admin.jsp</result> 
+            <result name="Teacher">/Teacher.jsp</result>
+            <result name="Student">/Student.jsp</result>
+            <result name="error">/index.jsp</result>  
+        </action>
+        <action name="logout" class="com.example.proj.action.Login" method="logout"> 
+            <result name="success">/index.jsp</result>
+            <result name="error">/index.jsp</result>
+        </action>
+        <action name="Admin" class="com.example.proj.action.Admin" method="execute">
+            <result>Admin.jsp</result>
+        </action>
+        <action name="Teacher" class="com.example.proj.action.Teacher" method="execute">
+            <result>Teacher.jsp</result>
+        </action>
+        <action name="Student" class="com.example.proj.action.Student" method="execute">
+            <result>Student.jsp</result>
+        </action>
+
+        <!-- ADMIN REGISTER -->
+        <action name="myRegistrations" class="com.example.proj.action.Register" method="execute">
+            <result name="success">/Register.jsp</result>
+            <result name="error">/Register.jsp</result>
+        </action>
+        <action name="Register" class="com.example.proj.action.Register" method="saveToDB">
+            <result name="input">/Register.jsp</result>
+            <result name="success">/Register.jsp</result>
+            <result name="error">/Register.jsp</result>
+        </action>
+
+        <!-- ADMIN DUO -->
+        <action name="myDuo" class="com.example.proj.action.myDuo" method="execute">
+            <result name="success">/myDuo.jsp</result>
+            <result name="error">/myDuo.jsp</result>
+        </action>
+        <action name="UpdateDuo" class="com.example.proj.action.myDuo" method="updateDuo">
+            <result name="success">/myDuo.jsp</result>
+            <result name="error">/myDuo.jsp</result>
+        </action>
+
+        <!-- ADMIN EXAMS -->
+        <action name="myExams" class="com.example.proj.action.myExams" method="execute">
+            <result name="success">/myExams.jsp</result>
+            <result name="error">/myExams.jsp</result>
+        </action>
+        <action name="AdminSortExams" class="com.example.proj.action.myExams" method="adminSortExams">
+            <result name="success">/myExams.jsp</result>
+            <result name="error">/myExams.jsp</result>
+        </action>
+        <action name="AdminCreateExam" class="com.example.proj.action.myExams" method="adminCreateExam">
+            <result>/myExams.jsp</result>
+        </action>
+        <action name="CreateExam" class="com.example.proj.action.myExams" method="createExam">
+            <result name="success">/myExams.jsp</result>
+            <result name="error">/myExams.jsp</result>
+        </action>
+        <action name="AdminUpdateExam" class="com.example.proj.action.myExams" method="adminUpdateExam">
+            <result name="success">/myExams.jsp</result> 
+            <result name="error">/myExams.jsp</result>
+        </action>
+        <action name="UpdateExam" class="com.example.proj.action.myExams" method="updateExam">
+            <result name="success">/myExams.jsp</result>
+            <result name="error">/myExams.jsp</result>
+        </action>
+        <action name="AdminDeleteExam" class="com.example.proj.action.myExams" method="adminDeleteExam">
+            <result>/myExams.jsp</result>
+        </action>
+        <action name="DeleteExam" class="com.example.proj.action.myExams" method="deleteExam">
+            <result name="success">/myExams.jsp</result>
+            <result name="error">/myExams.jsp</result>
+        </action>
+        <action name="AdminCancelExam" class="com.example.proj.action.myExams" method="adminCancelExam">
+            <result>/myExams.jsp</result>
+        </action>
+
+        <!-- ADMIN QUESTIONS -->
+        <action name="myQuestions" class="com.example.proj.action.myQuestions" method="execute">
+            <result>/myQuestions.jsp</result>
+        </action>
+        <action name="AdminSortQuestions" class="com.example.proj.action.myQuestions" method="adminSortQuestions">
+            <result name="success">/myQuestions.jsp</result>
+            <result name="error">/myQuestions.jsp</result>
+        </action>
+        <action name="AdminCreateQuestion" class="com.example.proj.action.myQuestions" method="adminCreateQuestion">
+            <result>/myQuestions.jsp</result>
+        </action>
+        <action name="CreateQuestion" class="com.example.proj.action.myQuestions" method="createQuestion">
+            <result name="success">/myQuestions.jsp</result>
+            <result name="error">/myQuestions.jsp</result>
+        </action>
+        <action name="AdminUpdateQuestion" class="com.example.proj.action.myQuestions" method="adminUpdateQuestion">
+            <result>/myQuestions.jsp</result>
+        </action>
+        <action name="UpdateQuestion" class="com.example.proj.action.myQuestions" method="updateQuestion">
+            <result name="success">/myQuestions.jsp</result>
+            <result name="error">/myQuestions.jsp</result>
+        </action>
+        <action name="AdminDeleteQuestion" class="com.example.proj.action.myQuestions" method="adminDeleteQuestion">
+            <result>/myQuestions.jsp</result>
+        </action>
+        <action name="DeleteQuestion" class="com.example.proj.action.myQuestions" method="deleteQuestion">
+            <result name="success">/myQuestions.jsp</result>
+            <result name="error">/myQuestions.jsp</result>
+        </action>
+        <action name="AdminCancelQuestion" class="com.example.proj.action.myQuestions" method="adminCancelQuestion">
+            <result>/myQuestions.jsp</result>
+        </action>
+
+        <!-- STUDENT - EXAM -->
+        <action name="StudentExam" class="com.example.proj.action.StudentExam" method="execute">
+            <result name="success">/StudentExam.jsp</result>
+            <result name="error">/StudentExam.jsp</result>
+        </action>
+        <action name="StudentSortExams" class="com.example.proj.action.StudentExam" method="studentSortExams">
+            <result name="success">/StudentExam.jsp</result>
+            <result name="error">/StudentExam.jsp</result>
+        </action>
+        <action name="DisplayAllStudentExams" class="com.example.proj.action.StudentExam" method="displayAllStudentExams">
+            <result name="success">/StudentExam.jsp</result>
+            <result name="error">/StudentExam.jsp</result>
+        </action>
+        <action name="StudentCancelExam" class="com.example.proj.action.StudentExam" method="studentCancelExam">
+            <result>/StudentExam.jsp</result>
+        </action>
+
+        <!-- STUDENT'S EXAMINATION -->
+        <action name="StudentTakeExam" class="com.example.proj.action.StudentExam" method="studentTakeExam">
+            <result name="success">/Examination.jsp</result>
+            <result name="error">/StudentExam.jsp</result>
+        </action>
+        <action name="StartExam" class="com.example.proj.action.Examination" method="execute">
+            <result name="success">/Examination.jsp</result>
+            <result name="error">/Examination.jsp</result>
+        </action>
+        <action name="SubmitExam" class="com.example.proj.action.Examination" method="submitExam">
+            <result name="success">/ExamResults.jsp</result>
+            <result name="error">/Examination.jsp</result>
+        </action>
+
+        <action name="EvaluationOfTeacher" class="com.example.proj.action.Evaluation" method="execute">
+            <result name="input">/Evaluation.jsp</result>
+            <result name="success">/Evaluation.jsp</result>
+            <result name="error">/Error.jsp</result>
+        </action>
+
+        <action name="EvaluateTeacher" class="com.example.proj.action.Evaluation" method="evaluateTeacher">
+            <result name="success">/Evaluation.jsp</result>
+            <result name="error">/Error.jsp</result>
+        </action>
+
+        <action name="PerformanceOfStudent" class="com.example.proj.action.Performance" method="execute">
+            <result name="input">/Performance.jsp</result>
+            <result name="success">/Performance.jsp</result>
+            <result name="error">/Error.jsp</result>
+        </action>
+
+        <action name="PerformanceRemarks" class="com.example.proj.action.Performance" method="performanceRemarks">
+            <result name="success">/Performance.jsp</result>
+            <result name="error">/Performance.jsp</result>
+        </action>
+
+        <!-- GITS -->
+        <action name="GITS" class="com.example.proj.action.GITS" method="execute">
+            <result name="success">/GITS.jsp</result>
+            <result name="error">/GITS.jsp</result>
+        </action>
+        <action name="TeacherCreateGit" class="com.example.proj.action.GITS" method="teacherCreateGit">
+            <result>/GITS.jsp</result>
+        </action>
+        <action name="CreateGit" class="com.example.proj.action.GITS" method="createGit">
+            <result name="success">/GITS.jsp</result>
+            <result name="error">/GITS.jsp</result>
+        </action>
+
+        <action name="TeacherCancelGit" class="com.example.proj.action.GITS" method="teacherCancelGit">
+            <result>/GITS.jsp</result>
+        </action>
+
+        <action name="TeacherShowGit" class="com.example.proj.action.GITS" method="teacherShowGit">
+            <result>/GITS.jsp</result>
+        </action>
+
+
+        <action name="AFO" class="com.example.proj.action.AFO" method="execute">
+            <result name="success">/AFO.jsp</result>
+            <result name="error">/AFO.jsp</result>
+        </action>
+
+        <action name="FAQs" class="com.example.proj.action.FAQs" method="execute">
+            <result name="success">/FAQs.jsp</result>
+            <result name="error">/FAQs.jsp</result>
+        </action>
+        
+        <action name="List" class="com.example.proj.action.List" method="execute">
+            <result name="success">/List.jsp</result>
+            <result name="error">/List.jsp</result>
+        </action>
+
+    </package>
+
+    <!-- <package name="api" namespace="/api" extends="rest-default">
+        <action name="accounts/*" class="com.example.proj.rest.AccountsController">
+            <param name="id">{1}</param>
+        </action>
+    </package> -->
+</struts>
